@@ -1,0 +1,22 @@
+{
+  "detection_waveform": {
+    "wavelength_m": 0.012491352416666667,
+    "slope_Hz_per_s": 2500000000000.0,
+    "adc_rate_complex_Hz": 2560000.0,
+    "range_resolution_m": 0.599584916,
+    "max_range_m": 153.493738496,
+    "range_bins": 256,
+    "max_unambiguous_velocity_mps": 31.228381041666665,
+    "velocity_resolution_mps": 0.48794345377604165,
+    "doppler_bins": 128,
+    "frame_time_s": 0.0128
+  },
+  "classification_dwell": {
+    "prf_Hz": 50000.0,
+    "max_unambiguous_velocity_mps": 156.14190520833333,
+    "duration_s": 0.4,
+    "pulses": 20000,
+    "doppler_span_Hz": 50000.0,
+    "max_blade_tip_speed_mps_in_dataset": 113.09733552923255
+  }
+}
