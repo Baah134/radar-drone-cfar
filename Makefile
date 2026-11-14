@@ -32,3 +32,8 @@ classify:
 	$(RUN) scripts.classify --n 400
 figures:
 	$(RUN) scripts.write_results
+board:
+	$(RUN) board.board_test gen
+	$(RUN) board.board_test build
+	$(RUN) board.board_test program
+	$(RUN) board.board_test run --port COM10

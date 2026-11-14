@@ -1,8 +1,14 @@
 # Running the CFAR block in Vivado yourself (Prince)
 
-Everything in `results/` about resources and timing comes from tools run by Claude Code
-(Yosys estimates and out-of-context Vivado reports for xc7a35tcpg236-1). Nothing has run
-on a board. These steps reproduce the reports on your machine and take it further.
+**Status (2026-11-13):** the block ran on your Basys 3 at 100 MHz, bit-exact on 10/10 runs
+(`results/board_measured.json`). Reproduce with:
+```bash
+python -m board.board_test gen
+python -m board.board_test build
+python -m board.board_test program
+python -m board.board_test run --port COM10
+```
+The steps below reproduce the block-level reports and describe further board work.
 
 ## 1. Same reports as the repo (out-of-context, no board)
 

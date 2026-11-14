@@ -1,0 +1,161 @@
+{
+  "date": "2026-11-13",
+  "board": "Digilent Basys 3 (xc7a35tcpg236-1)",
+  "who": "Prince's board, connected by Prince; built, programmed and run over JTAG/UART by Claude Code",
+  "tool": "Vivado 2025.2 (full implementation of the test design, 100 MHz system clock)",
+  "clock_MHz": 100,
+  "wns_ns_at_100MHz": 3.027,
+  "test_design_utilization": {
+    "LUT": 446,
+    "FF": 567,
+    "BRAM_tile": 15,
+    "DSP": 1
+  },
+  "stimulus": {
+    "cells": 16384,
+    "lines": 95,
+    "alpha_q": 43715,
+    "n_train": 16,
+    "n_guard": 2,
+    "content": "directed lines, range lines from simulated radar scenes, random lines"
+  },
+  "repetitions_per_mode": 5,
+  "all_runs_bit_exact": true,
+  "runs": {
+    "R": [
+      {
+        "stall_mode": false,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 16351,
+        "stall_cycles": 0,
+        "input_cycles_first_to_last": 16384,
+        "throughput_cells_per_input_cycle": 1.0
+      },
+      {
+        "stall_mode": false,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 16351,
+        "stall_cycles": 0,
+        "input_cycles_first_to_last": 16384,
+        "throughput_cells_per_input_cycle": 1.0
+      },
+      {
+        "stall_mode": false,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 16351,
+        "stall_cycles": 0,
+        "input_cycles_first_to_last": 16384,
+        "throughput_cells_per_input_cycle": 1.0
+      },
+      {
+        "stall_mode": false,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 16351,
+        "stall_cycles": 0,
+        "input_cycles_first_to_last": 16384,
+        "throughput_cells_per_input_cycle": 1.0
+      },
+      {
+        "stall_mode": false,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 16351,
+        "stall_cycles": 0,
+        "input_cycles_first_to_last": 16384,
+        "throughput_cells_per_input_cycle": 1.0
+      }
+    ],
+    "S": [
+      {
+        "stall_mode": true,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 21969,
+        "stall_cycles": 5634,
+        "input_cycles_first_to_last": 22018,
+        "throughput_cells_per_input_cycle": 0.7441
+      },
+      {
+        "stall_mode": true,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 21839,
+        "stall_cycles": 5499,
+        "input_cycles_first_to_last": 21883,
+        "throughput_cells_per_input_cycle": 0.7487
+      },
+      {
+        "stall_mode": true,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 21930,
+        "stall_cycles": 5589,
+        "input_cycles_first_to_last": 21973,
+        "throughput_cells_per_input_cycle": 0.7456
+      },
+      {
+        "stall_mode": true,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 21804,
+        "stall_cycles": 5479,
+        "input_cycles_first_to_last": 21863,
+        "throughput_cells_per_input_cycle": 0.7494
+      },
+      {
+        "stall_mode": true,
+        "decisions": 12964,
+        "expected_decisions": 12964,
+        "detections": 50,
+        "mismatches": 0,
+        "bit_exact": true,
+        "cells_in": 16384,
+        "cycles_first_input_to_last_decision": 21712,
+        "stall_cycles": 5375,
+        "input_cycles_first_to_last": 21759,
+        "throughput_cells_per_input_cycle": 0.753
+      }
+    ]
+  },
+  "method": "ROM-fed stream at one cell/clock (R) and with ~25% LFSR stalls (S); decisions captured on chip, read over UART, compared with src/hw_model/cfar_fixed.py"
+}

@@ -1,10 +1,11 @@
 # FMCW radar drone detection with a verified CFAR hardware block
 
-Simulation study. A 24 GHz FMCW radar processing chain for small drones (range and Doppler
+Simulation study with on-board verification of the hardware block. A 24 GHz FMCW radar processing chain for small drones (range and Doppler
 FFTs, clutter suppression, CA/OS/2D CFAR), detection performance checked against closed-form
 theory, a streaming 1D CA-CFAR in Verilog verified **bit-exactly** against a Python
-fixed-point model, FPGA resource estimates, and a micro-Doppler drone-vs-bird classifier
-evaluated with leakage-safe splits.
+fixed-point model in simulation and **on a Basys 3 FPGA board at 100 MHz** (10/10 runs,
+129,640 decisions, 0 mismatches), FPGA resource estimates, and a micro-Doppler
+drone-vs-bird classifier evaluated with leakage-safe splits.
 
 **Results: [RESULTS.md](RESULTS.md).** Hardware block: [rtl/README.md](rtl/README.md).
 Decisions: [docs/DECISIONS.md](docs/DECISIONS.md). Study guide: [docs/EXPLAINER.md](docs/EXPLAINER.md).
@@ -21,6 +22,7 @@ Decisions: [docs/DECISIONS.md](docs/DECISIONS.md). Study guide: [docs/EXPLAINER.
 | `rtl/` | `cfar_ca_1d.v`, interface/latency/overflow notes, Vivado instructions |
 | `tb/` | xsim testbench + Python runner, mutation test, waveform rendering |
 | `synth/` | Yosys (`synth_xilinx`) and Vivado (out-of-context P&R) scripts and reports |
+| `board/` | Basys 3 test design (ROM-fed stream, on-chip capture, UART), build/program/run script |
 | `src/classify/` | micro-Doppler dataset with instance IDs, splits, TinyCNN, features, simulated INT8 |
 | `scripts/` | experiments; `write_results.py` generates RESULTS.md |
 
@@ -44,5 +46,6 @@ unchanged: bit-exact RTL vs model on every test.
 
 ## Limitations
 
-Simulated data only (point scatterers). RTL verified in simulation only; resources and
-Fmax are tool reports, not board measurements. No tracking or antenna model.
+Simulated radar data only (point scatterers). The CFAR block is verified on the board with
+stored data at 100 MHz; there is no live radar front end, and the ~190-200 MHz Fmax is a
+Vivado estimate. No tracking or antenna model.

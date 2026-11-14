@@ -101,7 +101,8 @@ gap. Same lesson as your SER audit (speaker leakage).
 Shows: theory-matched CFAR in simulation; the window and clutter-edge effects; the
 classic CA vs OS trade-off; a CFAR block that is bit-exact with its model, robust to stalls,
 small (≈120–150 LUTs, 1 DSP) and estimated near 190–200 MHz on an Artix-7 (out-of-context).
-Does not show: real radar data, a board implementation, or tracking.
+Also shows: the block running bit-exactly on a real FPGA (Basys 3) at 100 MHz, one cell per
+clock. Does not show: real radar data, a live radar data path into the FPGA, or tracking.
 
 ## 9. Likely reviewer questions
 
@@ -114,8 +115,10 @@ Does not show: real radar data, a board implementation, or tracking.
    different algorithms that must agree. Mutation testing shows the harness detects bugs.
 4. *Why xsim, not Verilator/cocotb?* Tool availability on this machine (DECISIONS #1); the
    pass criterion is the same.
-5. *Is 200 MHz real?* It is Vivado's post-route estimate for the block alone on xc7a35t-1; a
-   board design with I/O could differ. Prince can reproduce it (rtl/VIVADO_RUN.md).
+5. *Did it run on hardware?* Yes, on a Basys 3 at 100 MHz: stored test data streamed from
+   block RAM at one cell per clock, decisions captured on chip and compared over UART with
+   the Python model: 10/10 runs bit-exact. The ~200 MHz figure is still only Vivado's
+   estimate for the block alone; the board ran at 100 MHz.
 6. *Why so many false alarms in clutter?* Strong (30 dB/sample), K-distributed clutter with
    Doppler spread leaks through MTI; plus the Hann baseline (~5 clusters/frame at Pfa 1e-4).
 7. *Would the classifier work on real drones?* Unknown: the signatures are idealized point

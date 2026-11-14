@@ -1,7 +1,8 @@
 # Summary for Prince — Project 2 (facts only; write your own words from these)
 
-**Headline (the strongest part):** the verified CFAR hardware block and the theory-matched
-detection curves. The classifier is a smaller, idealized add-on.
+**Headline (the strongest part):** the CFAR hardware block, verified bit-exactly in simulation
+AND on your Basys 3 FPGA board at 100 MHz, plus the theory-matched detection curves. The
+classifier is a smaller, idealized add-on.
 
 **What it is.** A simulation study of a 24 GHz FMCW radar for small-drone detection: a full
 processing chain, CFAR detection checked against theory, a streaming CA-CFAR hardware block in
@@ -27,7 +28,11 @@ estimates, and a micro-Doppler drone-vs-bird classifier with leakage-safe evalua
 - Hann windowing raises the real chain's false-alarm rate 1.7–3.6x above design.
 - Two close targets: CA-CFAR Pd 0.90 → 0.67 when the second target is in the training
   window; OS-CFAR stays at 0.89. At a +15 dB clutter edge both mask a target on the low side.
-- RTL: bit-exact on 45 tests, 1,868,856 decisions, 0 mismatches; 7/7 non-equivalent mutants caught.
+- RTL: bit-exact on 45 simulation tests, 1,868,856 decisions, 0 mismatches; 7/7 non-equivalent mutants caught.
+- **On your Basys 3 (measured, 2026-11-13):** 10/10 runs bit-exact with the Python model
+  (129,640 decisions, 0 mismatches), 5 runs at one cell per clock and 5 with random stalls;
+  16,384 cells in 16,384 clock cycles = 100 million cells/s at 100 MHz; timing met at 100 MHz
+  (3.03 ns slack). Stimulus came from on-chip memory (no live radar input).
 - Fixed vs float CFAR on realistic frames: 99.96% decision agreement (differences mostly from
   16-bit input saturation in strong clutter).
 - Vivado (out-of-context, xc7a35t-1): 122–147 LUTs, 219–243 FFs, 1 DSP48, Fmax estimate
@@ -39,18 +44,19 @@ estimates, and a micro-Doppler drone-vs-bird classifier with leakage-safe evalua
   93.9% ± 3.4% while a 6-feature logistic regression holds 96.3%. Accuracy falls to 93.5% at
   the lowest SNR band (-5..0 dB per pulse).
 
-**Words to avoid.** "deployed on FPGA", "runs at 200 MHz on hardware", "timing closed",
-"tested on real radar data", "detects drones" (say "in simulation"). Say "verified in RTL
-simulation", "Vivado out-of-context estimate", "simulated".
+**Words to avoid.** "runs at 200 MHz on hardware" (200 MHz is a Vivado estimate; the board
+ran at 100 MHz), "deployed in a radar", "tested on real radar data", "detects drones" (the
+radar data are simulated). OK to say: "verified bit-exactly on a Basys 3 FPGA at 100 MHz
+with simulated radar data", "100 million cells per second", "Vivado estimate ~190-200 MHz".
 
 **Link to your other work.** The bit-exact fixed-point-vs-reference method is the same one you
 use for the CREATE Lab accelerators; the leaky-vs-instance split is the same lesson as your
 SER audit.
 
-**What hardware validation would need.** Implement on your Artix-7 board with a test ROM and
-an ILA or UART readout, record utilization/timing from the full implementation and compare
-outputs with the model (rtl/VIVADO_RUN.md). Real radar data (e.g. a 24 GHz radar module)
-would be needed to test the detection and classification claims.
+**What further hardware validation would need.** The CFAR block itself is now verified on the
+board. Next steps would be a live data path (ADC/radar module streaming into the FPGA),
+running at the estimated ~190 MHz with a faster clock, and real radar data (e.g. a 24 GHz
+radar module) to test the detection and classification claims.
 
 **Things to be able to explain.** Beat frequency → range, chirp phase → velocity; the α formula
 and Swerling 1 Pd; why Hann windows break the CFAR independence assumption; CA vs OS; running

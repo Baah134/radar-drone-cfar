@@ -1,0 +1,32 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Fri Nov 13 22:45:20 2026
+| Host         : Baah running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file C:/Users/prince.baah/Downloads/aess/radar-drone-cfar/board/reports/util_hier.rpt
+| Design       : basys3_cfar_top
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------+------------+------------+------------+---------+------+-----+--------+--------+------------+
+|       Instance      |   Module   | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++---------------------+------------+------------+------------+---------+------+-----+--------+--------+------------+
+| basys3_cfar_top     |      (top) |        446 |        419 |       0 |   27 | 567 |     14 |      2 |          1 |
+|   (basys3_cfar_top) |      (top) |        198 |        198 |       0 |    0 | 287 |     14 |      2 |          0 |
+|   dut               | cfar_ca_1d |        123 |         96 |       0 |   27 | 211 |      0 |      0 |          1 |
+|   u_rx              |    uart_rx |         86 |         86 |       0 |    0 |  39 |      0 |      0 |          0 |
++---------------------+------------+------------+------------+---------+------+-----+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

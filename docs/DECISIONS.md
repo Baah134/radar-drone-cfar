@@ -75,3 +75,22 @@
     simulation (98.7%), the leaky-split gap is small (+0.4 pts) and is reported as such;
     the informative number is the held-out-configuration drop (CNN 93.9% vs features 96.3%).
     Not done: OS-CFAR hardware, cocotb/Verilator flow, real radar data.
+
+## Session 2 - 2026-11-13 (on-board test, Basys 3)
+
+21. **On-board test design** (`board/`): 16,384-cell ROM in block RAM (directed, radar-derived
+    and random lines; N_TRAIN 16, N_GUARD 2, alpha_q 43715) streamed into cfar_ca_1d at
+    100 MHz; decisions captured in block RAM, read over the USB-UART (115200 baud) and compared
+    with the Python model. Modes: one cell per clock, and ~25% LFSR stalls. The whole design
+    was first simulated in xsim with the testbench acting as the PC.
+22. **Bugs found on the way (none in the CFAR block):**
+    (a) the testbench returned from sending a UART byte too late and missed the board's first
+        reply byte (a real PC UART is full duplex) - testbench fixed;
+    (b) a 4-bit constant for the reply length (16) truncated to 0 - widened to 5 bits;
+    (c) **the first bitstream ran with an all-zero ROM**: Tcl braces became part of the ROM
+        file path, Vivado logged a CRITICAL WARNING (could not open the $readmem data file)
+        and still produced a bitstream. The first board run therefore failed (16,148
+        mismatches). Fix: the ROM file is added to the build, and the build script now fails
+        on ANY Vivado CRITICAL WARNING.
+23. **Result:** 10/10 board runs bit-exact (129,640 decisions); 16,384 cells in 16,384 cycles;
+    timing met at 100 MHz with 3.03 ns slack. Not run at higher clocks.

@@ -63,6 +63,8 @@ neither running sum exceeds N_TRAIN·(2^16−1).
 
 Verified bit-exact against the Python model in Vivado 2025.2 xsim on directed, random and
 radar-derived lines for (N_TRAIN, N_GUARD) = (8, 2), (16, 2), (32, 4), with random input
-stalls; see `results/rtl_verification.json`. Mutation testing (`tb/mutation_test.py`)
-checks that the harness catches deliberately injected bugs. Resource numbers are synthesis
-estimates (Yosys) and out-of-context Vivado tool reports, not hardware measurements.
+stalls; see `results/rtl_verification.json`. **On hardware:** on a Digilent Basys 3 at
+100 MHz (N_TRAIN 16, N_GUARD 2), 10/10 runs bit-exact (129,640 decisions), one cell per
+clock, with and without random stalls; see `results/board_measured.json` and `board/`. Mutation testing (`tb/mutation_test.py`)
+checks that the harness catches deliberately injected bugs. Block resource numbers are synthesis
+estimates (Yosys) and out-of-context Vivado reports; the ~190-200 MHz Fmax figure was not run on the board.
