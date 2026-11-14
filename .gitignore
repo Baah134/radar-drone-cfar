@@ -14,3 +14,4 @@ results.xml
 vivado_proj/
 synth/vivado_work/
 board/build/
+board_build.log
