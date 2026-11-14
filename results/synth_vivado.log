@@ -1,0 +1,3 @@
+N_TRAIN=8: {'LUT': 122, 'LUT_as_logic': 95, 'LUT_as_shift_register': 27, 'FF': 219, 'DSP48E1': 1, 'BRAM_tile': 0} WNS -0.932 ns -> Fmax estimate 203 MHz
+N_TRAIN=16: {'LUT': 125, 'LUT_as_logic': 98, 'LUT_as_shift_register': 27, 'FF': 235, 'DSP48E1': 1, 'BRAM_tile': 0} WNS -1.030 ns -> Fmax estimate 199 MHz
+N_TRAIN=32: {'LUT': 147, 'LUT_as_logic': 96, 'LUT_as_shift_register': 51, 'FF': 243, 'DSP48E1': 1, 'BRAM_tile': 0} WNS -1.232 ns -> Fmax estimate 191 MHz

@@ -1,0 +1,16 @@
+{
+  "decisions": 1126400,
+  "agree": 1125999,
+  "float_det": 1990,
+  "fixed_det": 1843,
+  "diff": 401,
+  "diff_saturation": 275,
+  "diff_alpha_quant": 0,
+  "diff_flooring": 126,
+  "agreement_rate": 0.9996439985795454,
+  "frames": 40,
+  "alpha": 10.672685829226367,
+  "alpha_q": 43715,
+  "alpha_quantized": 10.672607421875,
+  "pfa_with_quantized_alpha": 0.00010000587990013716
+}

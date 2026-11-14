@@ -1,0 +1,32 @@
+
+4. Printing statistics.
+
+=== cfar_ca_1d ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      592 wires
+     1119 wire bits
+       23 public wires
+      347 public wire bits
+        9 ports
+       52 port bits
+      502 cells
+        1   BUFG
+       28   CARRY4
+        2   DSP48E1
+      200   FDRE
+       38   IBUF
+       13   INV
+       58   LUT2
+        6   LUT3
+       18   LUT4
+       36   LUT5
+       24   LUT6
+       14   OBUF
+       32   SRL16E
+       32   SRLC32E
+
+   Estimated number of LCs:        101
+
+Warning: Replacing memory \sr with list of registers. See C:/Users/prince.baah/Downloads/aess/radar-drone-cfar/rtl/cfar_ca_1d.v:63

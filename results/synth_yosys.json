@@ -1,0 +1,85 @@
+{
+  "tool": "Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+  "flow": "synth_xilinx -family xc7 (open-source ESTIMATE, no place-and-route, no timing)",
+  "results": [
+    {
+      "LUT": 136,
+      "FF": 177,
+      "SRL": 48,
+      "DSP48": 2,
+      "BRAM": 0,
+      "CARRY4": 25,
+      "cells": {
+        "BUFG": 1,
+        "CARRY4": 25,
+        "DSP48E1": 2,
+        "FDRE": 177,
+        "IBUF": 38,
+        "INV": 9,
+        "LUT2": 52,
+        "LUT3": 6,
+        "LUT4": 18,
+        "LUT5": 35,
+        "LUT6": 25,
+        "OBUF": 14,
+        "SRL16E": 48
+      },
+      "n_train": 8,
+      "n_guard": 2,
+      "window": 21
+    },
+    {
+      "LUT": 139,
+      "FF": 195,
+      "SRL": 48,
+      "DSP48": 2,
+      "BRAM": 0,
+      "CARRY4": 28,
+      "cells": {
+        "BUFG": 1,
+        "CARRY4": 28,
+        "DSP48E1": 2,
+        "FDRE": 195,
+        "IBUF": 38,
+        "INV": 12,
+        "LUT2": 55,
+        "LUT3": 6,
+        "LUT4": 18,
+        "LUT5": 35,
+        "LUT6": 25,
+        "OBUF": 14,
+        "SRL16E": 48
+      },
+      "n_train": 16,
+      "n_guard": 2,
+      "window": 37
+    },
+    {
+      "LUT": 142,
+      "FF": 200,
+      "SRL": 64,
+      "DSP48": 2,
+      "BRAM": 0,
+      "CARRY4": 28,
+      "cells": {
+        "BUFG": 1,
+        "CARRY4": 28,
+        "DSP48E1": 2,
+        "FDRE": 200,
+        "IBUF": 38,
+        "INV": 13,
+        "LUT2": 58,
+        "LUT3": 6,
+        "LUT4": 18,
+        "LUT5": 36,
+        "LUT6": 24,
+        "OBUF": 14,
+        "SRL16E": 32,
+        "SRLC32E": 32
+      },
+      "n_train": 32,
+      "n_guard": 4,
+      "window": 73
+    }
+  ]
+}

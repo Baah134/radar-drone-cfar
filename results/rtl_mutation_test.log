@@ -1,0 +1,17 @@
+FAIL [16,2] mutant/compare_ge_instead_of_gt: 40159 decisions, 475 detections, 663 mismatches []
+CAUGHT compare_ge_instead_of_gt {'mismatches': 663, 'tb_errors': []}
+FAIL [16,2] mutant/wrong_lead_tap: 40159 decisions, 475 detections, 178 mismatches []
+CAUGHT wrong_lead_tap {'mismatches': 178, 'tb_errors': []}
+FAIL [16,2] mutant/lag_window_off_by_one: 40159 decisions, 475 detections, 453 mismatches ['ERROR: running sum exceeds bound: lead=1042 lag=2087774 max=1048560']
+CAUGHT lag_window_off_by_one {'mismatches': 453, 'tb_errors': ['ERROR: running sum exceeds bound: lead=1042 lag=2087774 max=1048560', 'ERROR: running sum exceeds bound: lead=1042 lag=2087774 max=1048560']}
+FAIL [16,2] mutant/no_filled_mask_on_lag_out: 40159 decisions, 475 detections, 40159 mismatches []
+CAUGHT no_filled_mask_on_lag_out {'mismatches': 40159, 'tb_errors': []}
+FAIL [16,2] mutant/cut_one_cell_early: 40159 decisions, 475 detections, 914 mismatches []
+CAUGHT cut_one_cell_early {'mismatches': 914, 'tb_errors': []}
+PASS [16,2] mutant/EQUIV_drop_unused_sum_msb: 40159 decisions, 475 detections, 0 mismatches []
+MISSED (equivalent mutant: miss expected) EQUIV_drop_unused_sum_msb {'mismatches': 0, 'tb_errors': []}
+FAIL [16,2] mutant/truncated_sum_2_bits: 40159 decisions, 475 detections, 4267 mismatches []
+CAUGHT truncated_sum_2_bits {'mismatches': 4267, 'tb_errors': []}
+FAIL [16,2] mutant/index_off_by_one: 40159 decisions, 475 detections, 40159 mismatches []
+CAUGHT index_off_by_one {'mismatches': 40159, 'tb_errors': []}
+ALL NON-EQUIVALENT MUTANTS CAUGHT: True

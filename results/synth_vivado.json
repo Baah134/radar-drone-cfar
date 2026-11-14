@@ -1,0 +1,46 @@
+{
+  "tool": "vivado v2025.2 (64-bit)",
+  "part": "xc7a35tcpg236-1",
+  "flow": "out-of-context synth_design + opt/place/route_design (TOOL REPORT, not measured on hardware; no I/O)",
+  "results": [
+    {
+      "n_train": 8,
+      "n_guard": 2,
+      "LUT": 122,
+      "LUT_as_logic": 95,
+      "LUT_as_shift_register": 27,
+      "FF": 219,
+      "DSP48E1": 1,
+      "BRAM_tile": 0,
+      "clock_period_ns": 4.0,
+      "wns_ns": -0.932,
+      "fmax_estimate_MHz": 202.8
+    },
+    {
+      "n_train": 16,
+      "n_guard": 2,
+      "LUT": 125,
+      "LUT_as_logic": 98,
+      "LUT_as_shift_register": 27,
+      "FF": 235,
+      "DSP48E1": 1,
+      "BRAM_tile": 0,
+      "clock_period_ns": 4.0,
+      "wns_ns": -1.03,
+      "fmax_estimate_MHz": 198.8
+    },
+    {
+      "n_train": 32,
+      "n_guard": 4,
+      "LUT": 147,
+      "LUT_as_logic": 96,
+      "LUT_as_shift_register": 51,
+      "FF": 243,
+      "DSP48E1": 1,
+      "BRAM_tile": 0,
+      "clock_period_ns": 4.0,
+      "wns_ns": -1.232,
+      "fmax_estimate_MHz": 191.1
+    }
+  ]
+}

@@ -36,3 +36,42 @@
     (i.i.d. +14%, rectangular chain -7%). A diagnostic with 10x the cells and three new
     seeds (results/cfar_pfa_diagnostic.json) put i.i.d. 1e-3 within 1.4% of design and
     inside the CI 3/3 times, so the miss is a fluctuation, not a bias. Both reported.
+11. **Hardware fixed point:** 16-bit unsigned cells; threshold factor Q5.12 (17 bits,
+    alpha < 32). An 18-bit factor (Q6.12) mapped the product to 2 DSP48s in Yosys
+    (unsigned 18 bits need the DSP's 18-bit port as signed 19); 17 bits use 1. Q5.12
+    still covers N = 16 down to Pfa 1e-7 (alpha 27.8). Exact integer compare
+    `cut*N*2^12 > alpha_q*sum`: no division, no rounding, so model and RTL are exact.
+12. **Input scaling for real data:** floor(power x 64) saturating at 65535: 30.1 dB of
+    headroom above the noise mean. On frames with 30 dB/sample clutter, 275 of 401
+    float/fixed disagreements (out of 1.13 M decisions, 99.96% agreement) come from
+    saturation; a wider DATA_W or a log/shift front end would remove them. Not changed.
+13. **Shift register without reset.** First version cleared the 16-bit window register on
+    reset (718 FFs in Yosys, no SRLs). Replaced by a 1-bit `filled` flag per position
+    that masks pre-reset contents out of the running sums: 177-200 FFs and SRL-mapped
+    window. Re-verified in full after the change.
+14. **RTL simulator:** Vivado xsim (see #1), file-driven testbench, random stalls (0/20/30%),
+    sum-bound assertions every clock. Pass = identical (index, det) lists vs the model.
+15. **Mutation testing** of the harness: 8 single-line RTL mutants. The first run exposed a
+    harness bug (X outputs crashed the comparison instead of failing it; fixed). One
+    mutant (dropping the sum's MSB) is EQUIVALENT: for N = 32, 32*(2^16-1) < 2^21, so
+    that bit is always 0. It reveals one spare bit in SUM_W, not a test gap; a 2-bit
+    truncation mutant is caught. All 7 non-equivalent mutants caught.
+16. **Vivado cross-check:** out-of-context synth + place & route on xc7a35tcpg236-1 with a
+    4.0 ns clock target; Fmax reported as 1/(period - WNS). Tool report, not hardware.
+17. **Scenes:** the noise-only control gives ~5 false-alarm clusters/frame for 1D CA at
+    Pfa 1e-4 (2.8 expected false cells by design; Hann excess, #9), so clutter-induced
+    false alarms are the scene numbers minus this baseline.
+18. **Classifier dataset revised once (before any classifier result was used):** the first
+    version (body SNR -15..+5 dB per pulse, blade amplitude 0.06) made rotor and wing
+    signatures invisible in the spectrograms (only the body line; blades ~30 dB below
+    the body at <= 5 dB SNR). Revised to body SNR -5..+25 dB per pulse, blade amplitude
+    0.08-0.20 of the body, wing amplitude 0.15-0.35, so micro-Doppler is physically
+    present. Accuracy is reported per SNR band.
+19. **INT8 classifier = simulated** (fake quantization, per-channel int8 weights,
+    per-tensor int8 activations calibrated on training data); no integer kernel here.
+20. **Scope (2026-11-13, Prince: reduce scope where it helps, keep rigor):** the headline is
+    the verified CFAR block + theory-matched detection. The classifier is kept as a
+    secondary, idealized study (no further work on it): drone vs bird is easy in this
+    simulation (98.7%), the leaky-split gap is small (+0.4 pts) and is reported as such;
+    the informative number is the held-out-configuration drop (CNN 93.9% vs features 96.3%).
+    Not done: OS-CFAR hardware, cocotb/Verilator flow, real radar data.

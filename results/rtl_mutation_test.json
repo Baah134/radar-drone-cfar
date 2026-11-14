@@ -1,0 +1,64 @@
+{
+  "all_non_equivalent_caught": true,
+  "mutants": [
+    {
+      "mutant": "compare_ge_instead_of_gt",
+      "equivalent": false,
+      "caught": true,
+      "mismatches": 663,
+      "tb_errors": []
+    },
+    {
+      "mutant": "wrong_lead_tap",
+      "equivalent": false,
+      "caught": true,
+      "mismatches": 178,
+      "tb_errors": []
+    },
+    {
+      "mutant": "lag_window_off_by_one",
+      "equivalent": false,
+      "caught": true,
+      "mismatches": 453,
+      "tb_errors": [
+        "ERROR: running sum exceeds bound: lead=1042 lag=2087774 max=1048560",
+        "ERROR: running sum exceeds bound: lead=1042 lag=2087774 max=1048560"
+      ]
+    },
+    {
+      "mutant": "no_filled_mask_on_lag_out",
+      "equivalent": false,
+      "caught": true,
+      "mismatches": 40159,
+      "tb_errors": []
+    },
+    {
+      "mutant": "cut_one_cell_early",
+      "equivalent": false,
+      "caught": true,
+      "mismatches": 914,
+      "tb_errors": []
+    },
+    {
+      "mutant": "EQUIV_drop_unused_sum_msb",
+      "equivalent": true,
+      "caught": false,
+      "mismatches": 0,
+      "tb_errors": []
+    },
+    {
+      "mutant": "truncated_sum_2_bits",
+      "equivalent": false,
+      "caught": true,
+      "mismatches": 4267,
+      "tb_errors": []
+    },
+    {
+      "mutant": "index_off_by_one",
+      "equivalent": false,
+      "caught": true,
+      "mismatches": 40159,
+      "tb_errors": []
+    }
+  ]
+}

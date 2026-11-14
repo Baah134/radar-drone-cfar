@@ -1,0 +1,10 @@
+dataset (2400, 64, 64) in 66s
+instance seed 0: cnn 0.990 int8 0.990 lr 0.973 (test instances also in train: 0)
+instance seed 1: cnn 0.981 int8 0.981 lr 0.979 (test instances also in train: 0)
+instance seed 2: cnn 0.990 int8 0.981 lr 0.963 (test instances also in train: 0)
+heldout seed 0: cnn 0.976 int8 0.978 lr 0.963 (test instances also in train: 0)
+heldout seed 1: cnn 0.909 int8 0.905 lr 0.963 (test instances also in train: 0)
+heldout seed 2: cnn 0.931 int8 0.931 lr 0.963 (test instances also in train: 0)
+leaky seed 0: cnn 0.992 int8 0.992 lr 0.983 (test instances also in train: 334)
+leaky seed 1: cnn 0.994 int8 0.994 lr 0.977 (test instances also in train: 354)
+leaky seed 2: cnn 0.988 int8 0.990 lr 0.981 (test instances also in train: 352)

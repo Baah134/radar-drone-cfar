@@ -12,3 +12,4 @@ results.xml
 *.jou
 *.log.bak
 vivado_proj/
+synth/vivado_work/
